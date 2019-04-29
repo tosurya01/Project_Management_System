@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" time="0.015" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" time="0.011" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_162\jre\bin"/>
     <property name="java.vm.version" value="25.162-b12"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\venkata.kuppili\payment-workspace\pms-srv"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\venkata.kuppili\Desktop\New folder\Project_Management_System\pms-srv"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\venkata.kuppili\payment-workspace\pms-srv"/>
+    <property name="user.dir" value="C:\Users\venkata.kuppili\Desktop\New folder\Project_Management_System\pms-srv"/>
     <property name="java.runtime.version" value="1.8.0_162-b12"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_162\jre\lib\endorsed"/>
@@ -65,10 +65,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" name="testFromWsToDomain_positive" time="0.015"/>
-  <testcase classname="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" name="testFromWsToDomain_negitive" time="0"/>
+  <testcase classname="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" name="testFromWsToDomain_positive" time="0.008"/>
+  <testcase classname="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" name="testFromWsToDomain_negitive" time="0.001"/>
   <testcase classname="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" name="testFromDomainToWsProjectDetails_positive" time="0"/>
-  <testcase classname="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" name="testFromDomainToWsProjectDetails_negitive" time="0"/>
+  <testcase classname="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" name="testFromDomainToWsProjectDetails_negitive" time="0.001"/>
   <testcase classname="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" name="testFromDomainToWsListOfProjectDetails_positive" time="0"/>
-  <testcase classname="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" name="testFromDomainToWsListOfProjectDetails_negitive" time="0"/>
+  <testcase classname="com.evry.fs.payment.pms.srv.rs.service.mapper.ProjectDetailsV19_1WsMapperTest" name="testFromDomainToWsListOfProjectDetails_negitive" time="0.001"/>
 </testsuite>
