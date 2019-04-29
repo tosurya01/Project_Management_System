@@ -7,9 +7,13 @@ import static com.evry.fs.payment.pms.srv.testdata.ProjectDetailsTestDataConstan
 import static com.evry.fs.payment.pms.srv.testdata.ProjectDetailsTestDataConstants.PROJECT_NAME;
 import static com.evry.fs.payment.pms.srv.testdata.ProjectDetailsTestDataConstants.PROJECT_STATUS;
 import static com.evry.fs.payment.pms.srv.testdata.ProjectDetailsTestDataConstants.REMAINING_HRS;
+import static com.evry.fs.payment.pms.srv.testdata.ProjectDetailsTestDataConstants.TRUE;
+import static com.evry.fs.payment.pms.srv.testdata.ProjectDetailsTestDataConstants.WRONG_PROJECT_ID;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -17,52 +21,52 @@ import javax.persistence.PersistenceContext;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.evry.fs.payment.pms.srv.dao.entity.ProjectDetailsEntity;
-import com.evry.fs.payment.pms.srv.dao.internal.ProjectDetailsDaoImpl;
 import com.evry.fs.payment.pms.srv.dao.mapper.ProjectDetailsDaoMapper;
 import com.evry.fs.payment.pms.srv.model.ProjectDetails;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(locations = { "classpath:META-INF/spring/applicationContext.xml" })
+@ContextConfiguration(locations = { "classpath:META-INF/spring/testApplicationContext.xml" })
 public class ProjectDetailsDaoTest {
 	@Inject
-	ProjectDetailsDaoImpl projectDetailsDao;
-//	@PersistenceContext
-//	EntityManager entityManager;
-	@Mock
+	ProjectDetailsDao projectDetailsDao;
+	@PersistenceContext
+	EntityManager entityManager;
+	@Inject
 	ProjectDetailsDaoMapper projectDetailsDaoMapper;
 
-//	@Test
-//	public void testAddProject_negitive() {
-//		ProjectDetails projectDetails = getProjectDetails();
-//		ProjectDetailsEntity projectDetailsEntity = getProjectDetailsEntity();
-//		when(projectDetailsDaoMapper.fromModelToEntity(projectDetails)).thenReturn(projectDetailsEntity);
-//		//when(entityManager.contains(projectDetailsEntity)).thenReturn(FALSE);
-//		boolean flag = projectDetailsDao.addProject(projectDetails);
-//		assertThat(flag, is(false));
-//	}
-//
-//	@Test
-//	public void testGetProjectInfo_negitive() {
-//		projectDetailsDao.getProjectInfo(PROJECT_ID);
-//		// when()
-//	}
+	@Test
+	public void testGetProjectInfo() {
+		ProjectDetails projectDetails = projectDetailsDao.getProjectInfo(PROJECT_ID);
+		assertThat(projectDetails.getProjectId(), is(equalTo(PROJECT_ID)));
+		assertThat(projectDetails.getProjectName(), is(equalTo(PROJECT_NAME)));
+		assertThat(projectDetails.getProjectStatus(), is(equalTo(PROJECT_STATUS)));
+		assertThat(projectDetails.getEstimatedHrs(), is(equalTo(ESTIMATED_HRS)));
+		assertThat(projectDetails.getLoggedHrs(), is(equalTo(LOGGED_HRS)));
+		assertThat(projectDetails.getRemainingHrs(), is(equalTo(REMAINING_HRS)));
+	}
 
 	@Test
-	public void testUpdateProject() {
+	public void testUpdateProject_positive() {
+		assertThat(projectDetailsDao.updateProject(PROJECT_ID, PROJECT_NAME), is(equalTo(TRUE)));
+	}
+	@Test
+	public void testUpdateProject_negitive() {
+		assertThat(projectDetailsDao.updateProject(WRONG_PROJECT_ID, PROJECT_NAME), is(equalTo(FALSE)));
 	}
 
 	@Test
 	public void testGetAllProjects() {
+		List<ProjectDetails> projectDetailsList = projectDetailsDao.getAllProjects();
+		assertThat(projectDetailsList.isEmpty(), is(equalTo(FALSE)));
 	}
-
+	
 	@Test
-	public void testDeleteProject() {
+	public void testDeleteProject_negitive() {
+		assertThat(projectDetailsDao.deleteProject(WRONG_PROJECT_ID), is(equalTo(FALSE)));
 	}
 
 	private ProjectDetails getProjectDetails() {

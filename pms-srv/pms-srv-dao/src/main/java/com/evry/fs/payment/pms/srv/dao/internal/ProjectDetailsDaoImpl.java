@@ -39,7 +39,7 @@ public class ProjectDetailsDaoImpl implements ProjectDetailsDao {
 	public boolean addProject(ProjectDetails projectDetails) {
 		boolean flag = false;
 		ProjectDetailsEntity projectDetailsEntity = projectDetailsDaoMapper.fromModelToEntity(projectDetails);
-		if (entityManager.contains(projectDetailsEntity)) {
+		if (!entityManager.contains(projectDetailsEntity)) {
 			entityManager.persist(projectDetailsEntity);
 			flag = true;
 		}
